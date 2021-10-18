@@ -1,0 +1,7 @@
+com/aspire/MainApplication.java
+ com.aspire.MainApplication
+ com.aspire.MainApplication$1
+com/aspire/MainActivity.java
+ com.aspire.MainActivity
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList

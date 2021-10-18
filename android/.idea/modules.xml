@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Aspire.iml" filepath="$PROJECT_DIR$/.idea/modules/Aspire.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Aspire.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Aspire.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1402251037/Aspire.react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/1402251037/Aspire.react-native-safe-area-context.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1822676853/Aspire.react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/1822676853/Aspire.react-native-screens.iml" />
+    </modules>
+  </component>
+</project>

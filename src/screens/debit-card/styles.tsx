@@ -1,5 +1,7 @@
-import {StyleSheet} from 'react-native';
-import Colors from '../../theme/colors';
+import { StyleSheet, Dimensions } from "react-native";
+import Colors from "../../theme/colors";
+
+const { height } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
   mh6: {
@@ -15,27 +17,42 @@ const styles = StyleSheet.create({
     marginLeft: 24,
   },
   row: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   container: {
     flex: 1,
+    backgroundColor: "white",
+  },
+  fix: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    bottom: 0,
     backgroundColor: Colors.background,
   },
+  scrollView: {
+    flex: 1,
+    paddingTop: 300,
+  },
+  scrollContent: {
+    flexGrow: 1,
+  },
+  bottomView: {
+    height: 300,
+    backgroundColor: "white",
+  },
   whiteBGView: {
-    backgroundColor: 'white',
+    flex: 1,
+    backgroundColor: "white",
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    position: 'absolute',
-    left: 0,
-    top: '40%',
-    bottom: 0,
-    width: '100%',
   },
   logoContainer: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
     paddingEnd: 24,
   },
   logo: {
@@ -43,15 +60,15 @@ const styles = StyleSheet.create({
     color: Colors.green,
   },
   screenTitleContainer: {
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
     paddingStart: 24,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    fontFamily: 'Avenir Next',
+    fontWeight: "bold",
+    color: "white",
+    fontFamily: "Avenir Next",
   },
   balanceContainer: {
     paddingHorizontal: 24,
@@ -59,33 +76,36 @@ const styles = StyleSheet.create({
   },
   balanceTitle: {
     fontSize: 14,
-    color: 'white',
-    fontFamily: 'Avenir Next',
+    color: "white",
+    fontFamily: "Avenir Next",
   },
   balanceCurrencyIcon: {
     backgroundColor: Colors.green,
-    color: 'white',
+    color: "white",
     fontSize: 12,
-    fontWeight: 'bold',
-    fontFamily: 'Avenir Next',
+    fontWeight: "bold",
+    fontFamily: "Avenir Next",
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 4,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   balanceValue: {
     fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    fontFamily: 'Avenir Next',
+    fontWeight: "bold",
+    color: "white",
+    fontFamily: "Avenir Next",
     paddingLeft: 6,
   },
   cardContainer: {
     paddingHorizontal: 24,
+    position: "absolute",
+    width: "100%",
+    top: -80,
   },
   showCardNumberContainer: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   showCardIcon: {
     fontSize: 16,
@@ -94,15 +114,15 @@ const styles = StyleSheet.create({
   showCardButton: {
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     paddingHorizontal: 12,
     paddingVertical: 8,
   },
   showCardText: {
     fontSize: 12,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colors.green,
-    fontFamily: 'Avenir Next',
+    fontFamily: "Avenir Next",
     marginLeft: 8,
   },
   card: {
@@ -111,66 +131,66 @@ const styles = StyleSheet.create({
     padding: 24,
   },
   cardContentRow1: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   cardContentRow2: {},
   cardContentRow3: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 24,
   },
   cardContentRow4: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: 16,
   },
   cardContentRow5: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    justifyContent: "flex-end",
+    alignItems: "flex-end",
   },
   logoWithTextIcon: {
     fontSize: 21,
-    color: 'white',
+    color: "white",
   },
   useName: {
     fontSize: 22,
-    fontWeight: 'bold',
-    fontFamily: 'Avenir Next',
-    color: 'white',
+    fontWeight: "bold",
+    fontFamily: "Avenir Next",
+    color: "white",
   },
   dot: {
     height: 8,
     width: 8,
     borderRadius: 4,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginHorizontal: 2,
   },
   cardLast4Number: {
     fontSize: 14,
-    fontWeight: 'bold',
-    fontFamily: 'Avenir Next',
-    color: 'white',
+    fontWeight: "bold",
+    fontFamily: "Avenir Next",
+    color: "white",
   },
   validThruText: {
     fontSize: 13,
-    fontWeight: '600',
-    fontFamily: 'Avenir Next',
-    color: 'white',
+    fontWeight: "600",
+    fontFamily: "Avenir Next",
+    color: "white",
   },
   cvvText: {
     fontSize: 13,
-    fontWeight: '600',
-    fontFamily: 'Avenir Next',
-    color: 'white',
+    fontWeight: "600",
+    fontFamily: "Avenir Next",
+    color: "white",
   },
   visaLogo: {
     fontSize: 24,
-    color: 'white',
+    color: "white",
   },
   fixView: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
     width: 100,
     height: 100,
-    position: 'absolute',
+    position: "absolute",
     right: 0,
     top: 8,
   },
@@ -179,29 +199,32 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   actionItem: {
-    flexDirection: 'row',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
     marginVertical: 12,
     paddingEnd: 12,
   },
   actionItemIcon: {},
   descriptionContainer: {
     marginStart: 12,
+    marginEnd: 12,
   },
   actionName: {
     fontSize: 14,
-    fontWeight: '500',
-    fontFamily: 'Avenir Next',
+    fontWeight: "500",
+    fontFamily: "Avenir Next",
     color: Colors.text0,
   },
   actionDescription: {
     fontSize: 13,
-    fontWeight: '300',
-    fontFamily: 'Avenir Next',
+    fontWeight: "300",
+    fontFamily: "Avenir Next",
     color: Colors.text1,
   },
   weeklyLimitChartContainer: {
     paddingHorizontal: 24,
-    marginTop: 24,
+    marginTop: 180,
   },
 });
 

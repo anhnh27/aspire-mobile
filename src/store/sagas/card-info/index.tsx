@@ -1,4 +1,4 @@
-import {call, put, takeLatest} from 'redux-saga/effects';
+import { call, put, takeLatest } from "redux-saga/effects";
 
 import {
   ICardInfo,
@@ -9,37 +9,37 @@ import {
   SetWeeklyLimitRequest,
   setWeeklyLimitSuccess,
   setWeeklyLimitFailure,
-} from '../../reducers/card-info/actions';
-import {showModal} from '../../reducers/modal/actions';
+} from "../../reducers/card-info/actions";
+import { showModal } from "../../reducers/modal/actions";
 
 const fakeAPICall = () => {
-  return new Promise(resolve => setTimeout(resolve, 1500));
+  return new Promise((resolve) => setTimeout(resolve, 1500));
 };
 
 const getCardInfo = async () => {
   await fakeAPICall();
   return {
-    id: '1',
-    validThru: '12/23',
-    cardNo: '111 222 333 2020',
-    last4Digits: '2020',
-    cvv: '***',
+    id: "1",
+    validThru: "12/23",
+    cardNo: "111 222 333 2020",
+    last4Digits: "2020",
+    cvv: "***",
     balance: 3000,
-    currency: 'SGD',
-    type: 'Visa',
+    currency: "SGD",
+    type: "Visa",
     isSpendingLimitEnabled: false,
     weeklySpendingLimit: 1000,
-    currentSpending: 250,
+    currentSpending: 500,
   };
 };
 
 const setWeeklyLimit = async (limit: number) => {
   await fakeAPICall();
   return {
-    id: '1',
-    validThru: '12/23',
-    cardNo: '111 222 333 2020',
-    last4Digits: '2020',
+    id: "1",
+    validThru: "12/23",
+    cardNo: "111 222 333 2020",
+    last4Digits: "2020",
     balance: 3000,
     isSpendingLimitEnabled: false,
     weeklySpendingLimit: limit,
@@ -54,14 +54,14 @@ function* fetchCardInfoSaga() {
     yield put(
       fetchCardInfoSuccess({
         data: response,
-      }),
+      })
     );
   } catch (e) {
-    yield put(showModal({visible: true, type: 'error', message: e.messag}));
+    yield put(showModal({ visible: true, type: "error", message: e.messag }));
     yield put(
       fetchCardInfoFailure({
         error: e.message,
-      }),
+      })
     );
   }
 }
@@ -69,18 +69,20 @@ function* fetchCardInfoSaga() {
 function* setWeeklyLimitSaga(action: SetWeeklyLimitRequest) {
   try {
     const response: ICardInfo = yield call(setWeeklyLimit, action.payload);
-    yield put(showModal({visible: true, type: 'success', message: 'Success!'}));
+    yield put(
+      showModal({ visible: true, type: "success", message: "Success!" })
+    );
     yield put(
       setWeeklyLimitSuccess({
         data: response,
-      }),
+      })
     );
   } catch (e) {
-    yield put(showModal({visible: true, type: 'error', message: e.messag}));
+    yield put(showModal({ visible: true, type: "error", message: e.messag }));
     yield put(
       setWeeklyLimitFailure({
         error: e.message,
-      }),
+      })
     );
   }
 }

@@ -130,49 +130,50 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
         </View>
       </View>
       <ScrollView
-        style={[styles.scrollView, size && { paddingTop: size.height + 100 }]}
-        contentContainerStyle={styles.scrollContent}
+        style={styles.scrollView}
+        contentContainerStyle={[
+          styles.scrollContent,
+          size && { marginTop: size.height },
+        ]}
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.whiteBGView}>
-          <View style={styles.cardContainer}>
-            <View style={styles.showCardNumberContainer}>
-              <View style={styles.fixView} />
-              <View style={[styles.showCardButton, styles.row]}>
-                <Icon iconName={"eye"} style={styles.showCardIcon} />
-                <Text style={styles.showCardText}>
-                  {STRINGS.show_card_number}
-                </Text>
-              </View>
-            </View>
-            <View style={styles.card}>
-              <View style={styles.cardContentRow1}>
-                <Icon
-                  iconName={"aspire-Logo"}
-                  style={styles.logoWithTextIcon}
-                />
-              </View>
-              <View style={styles.cardContentRow2}>
-                <Text style={styles.useName}>
-                  {userProfile?.data?.displayName || "--"}
-                </Text>
-              </View>
-              <View style={styles.cardContentRow3}>
-                <CardNumberHidden
-                  last4Digits={cardInfo?.data?.last4Digits || "----"}
-                />
-              </View>
-              <View style={styles.cardContentRow4}>
-                <Text style={styles.validThruText}>{`Thru: ${
-                  cardInfo?.data?.validThru || "--"
-                }`}</Text>
-                <Text style={[styles.cvvText, styles.ml24]}>{"CVV: ***"}</Text>
-              </View>
-              <View style={styles.cardContentRow5}>
-                <Icon iconName={"Visa-Logo"} style={styles.visaLogo} />
-              </View>
+        <View style={styles.cardContainer}>
+          <View style={styles.topBorderRadiusView} />
+          <View style={styles.showCardNumberContainer}>
+            <View style={styles.fixView} />
+            <View style={[styles.showCardButton, styles.row]}>
+              <Icon iconName={"eye"} style={styles.showCardIcon} />
+              <Text style={styles.showCardText}>
+                {STRINGS.show_card_number}
+              </Text>
             </View>
           </View>
+          <View style={styles.card}>
+            <View style={styles.cardContentRow1}>
+              <Icon iconName={"aspire-Logo"} style={styles.logoWithTextIcon} />
+            </View>
+            <View style={styles.cardContentRow2}>
+              <Text style={styles.useName}>
+                {userProfile?.data?.displayName || "--"}
+              </Text>
+            </View>
+            <View style={styles.cardContentRow3}>
+              <CardNumberHidden
+                last4Digits={cardInfo?.data?.last4Digits || "----"}
+              />
+            </View>
+            <View style={styles.cardContentRow4}>
+              <Text style={styles.validThruText}>{`Thru: ${
+                cardInfo?.data?.validThru || "--"
+              }`}</Text>
+              <Text style={[styles.cvvText, styles.ml24]}>{"CVV: ***"}</Text>
+            </View>
+            <View style={styles.cardContentRow5}>
+              <Icon iconName={"Visa-Logo"} style={styles.visaLogo} />
+            </View>
+          </View>
+        </View>
+        <View style={styles.whiteBGView}>
           <View style={styles.weeklyLimitChartContainer}>
             <BarChart
               currentValue={cardInfo?.data?.currentSpending || "--"}
@@ -215,8 +216,10 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
               onPress={() => console.log("press")}
             />
           </View>
+          <View
+            style={[styles.bottomView, size && { height: size.height * 1.5 }]}
+          />
         </View>
-        <View style={styles.bottomView} />
       </ScrollView>
     </View>
   );

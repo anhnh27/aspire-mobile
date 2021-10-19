@@ -29,26 +29,23 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 0,
     left: 0,
+    bottom: "20%",
     width: "100%",
-    bottom: 0,
     backgroundColor: Colors.background,
   },
   scrollView: {
     flex: 1,
-    paddingTop: 300,
   },
   scrollContent: {
     flexGrow: 1,
   },
   bottomView: {
-    height: 300,
     backgroundColor: "white",
   },
   whiteBGView: {
     flex: 1,
     backgroundColor: "white",
-    borderTopLeftRadius: 32,
-    borderTopRightRadius: 32,
+    paddingTop: 24,
   },
   logoContainer: {
     justifyContent: "flex-end",
@@ -98,14 +95,21 @@ const styles = StyleSheet.create({
     paddingLeft: 6,
   },
   cardContainer: {
-    paddingHorizontal: 24,
-    position: "absolute",
     width: "100%",
-    top: -80,
+  },
+  topBorderRadiusView: {
+    height: 100,
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+    backgroundColor: "white",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
   },
   showCardNumberContainer: {
     justifyContent: "flex-end",
     alignItems: "flex-end",
+    marginHorizontal: 24,
   },
   showCardIcon: {
     fontSize: 16,
@@ -129,6 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.green,
     borderRadius: 8,
     padding: 24,
+    marginHorizontal: 24,
   },
   cardContentRow1: {
     justifyContent: "flex-end",
@@ -224,7 +229,6 @@ const styles = StyleSheet.create({
   },
   weeklyLimitChartContainer: {
     paddingHorizontal: 24,
-    marginTop: 180,
   },
 });
 

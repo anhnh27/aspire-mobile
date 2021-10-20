@@ -46,11 +46,36 @@ const CardNumberHidden = (props: CardNumberHidden) => {
   );
 };
 
+type CardNumber = {
+  cardNo: string;
+};
+
+const CardNumber = (props: CardNumber) => {
+  const numbers = props?.cardNo?.split(" ");
+
+  if (!numbers) return null;
+
+  return (
+    <>
+      {numbers.map((number, index) => {
+        return (
+          <Text
+            key={index}
+            style={[styles.cardLast4Number, index !== 0 && styles.ml24]}
+          >
+            {number}
+          </Text>
+        );
+      })}
+    </>
+  );
+};
+
 type ActionItemProps = {
   source: any;
   name: string;
   description: string;
-  onPress: any;
+  onPress: () => void;
   withSwitch?: boolean;
   isSwitchedOn?: boolean;
 };
@@ -90,6 +115,33 @@ const ActionItem = (props: ActionItemProps) => {
   );
 };
 
+type ShowCardButtonProps = {
+  onShowCardPress: () => void;
+  isShowCardNo: boolean;
+};
+
+const ShowCardButton = (props: ShowCardButtonProps) => {
+  return (
+    <TouchableOpacity
+      style={[styles.showCardButton, styles.row]}
+      onPress={props.onShowCardPress}
+    >
+      {props.isShowCardNo ? (
+        <Image
+          source={require("../../assets/images/eye-close.png")}
+          style={styles.showCardIcon}
+        />
+      ) : (
+        <Image
+          source={require("../../assets/images/eye-close.png")}
+          style={styles.showCardIcon}
+        />
+      )}
+      <Text style={styles.showCardText}>{STRINGS.show_card_number}</Text>
+    </TouchableOpacity>
+  );
+};
+
 type DebitCardScreenProps = {};
 
 const DebitCardScreen: React.FC<DebitCardScreenProps> = (
@@ -100,6 +152,7 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
   const userProfile = useSelector((state) => state.userProfile);
   const navigation = useNavigation();
   const { top } = useSafeAreaInsets();
+  const [isShowCardNo, setShowCardNo] = React.useState(true);
 
   React.useEffect(() => {
     dispatch(fetchCardInfoRequest());
@@ -107,6 +160,9 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
   }, [dispatch]);
 
   const [size, onLayout] = useComponentSize();
+  const onShowCardPress = () => {
+    setShowCardNo(!isShowCardNo);
+  };
 
   return (
     <View style={styles.container}>
@@ -141,12 +197,10 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
           <View style={styles.topBorderRadiusView} />
           <View style={styles.showCardNumberContainer}>
             <View style={styles.fixView} />
-            <View style={[styles.showCardButton, styles.row]}>
-              <Icon iconName={"eye"} style={styles.showCardIcon} />
-              <Text style={styles.showCardText}>
-                {STRINGS.show_card_number}
-              </Text>
-            </View>
+            <ShowCardButton
+              isShowCardNo={isShowCardNo}
+              onShowCardPress={onShowCardPress}
+            />
           </View>
           <View style={styles.card}>
             <View style={styles.cardContentRow1}>
@@ -158,9 +212,13 @@ const DebitCardScreen: React.FC<DebitCardScreenProps> = (
               </Text>
             </View>
             <View style={styles.cardContentRow3}>
-              <CardNumberHidden
-                last4Digits={cardInfo?.data?.last4Digits || "----"}
-              />
+              {isShowCardNo ? (
+                <CardNumber cardNo={cardInfo?.data?.cardNo} />
+              ) : (
+                <CardNumberHidden
+                  last4Digits={cardInfo?.data?.last4Digits || "----"}
+                />
+              )}
             </View>
             <View style={styles.cardContentRow4}>
               <Text style={styles.validThruText}>{`Thru: ${

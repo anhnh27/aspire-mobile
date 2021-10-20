@@ -111,10 +111,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     marginHorizontal: 24,
   },
-  showCardIcon: {
-    fontSize: 16,
-    color: Colors.green,
-  },
+  showCardIcon: {},
   showCardButton: {
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,

@@ -21,7 +21,7 @@ const getCardInfo = async () => {
   return {
     id: "1",
     validThru: "12/23",
-    cardNo: "111 222 333 2020",
+    cardNo: "1111 2222 3333 2020",
     last4Digits: "2020",
     cvv: "***",
     balance: 3000,
@@ -38,7 +38,7 @@ const setWeeklyLimit = async (limit: number) => {
   return {
     id: "1",
     validThru: "12/23",
-    cardNo: "111 222 333 2020",
+    cardNo: "1111 2222 3333 2020",
     last4Digits: "2020",
     balance: 3000,
     isSpendingLimitEnabled: false,
